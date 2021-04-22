@@ -6,6 +6,7 @@ const ReactRefreshLoader = require('react-refresh-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
 const DEVELOPMENT = 'development';
 const NODE_ENV = process.env.NODE_ENV || DEVELOPMENT;
@@ -94,6 +95,11 @@ if (__DEV__) {
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css',
+    }),
+    new OptimizeCssAssetsWebpackPlugin({
+      cssProcessorPluginOptions: {
+        preset: ['default', { discardComments: { removeAll: true } }],
+      },
     }),
   );
   config.optimization = {
