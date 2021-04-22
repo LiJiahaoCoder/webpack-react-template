@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshLoader = require('react-refresh-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -115,6 +116,7 @@ if (__DEV__) {
         },
       },
     },
+    minimizer: [new UglifyJsWebpackPlugin()],
   };
 }
 
