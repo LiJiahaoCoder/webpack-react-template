@@ -87,7 +87,7 @@ if (__DEV__) {
   config.stats = 'none';
   config.plugins.push(
     new CleanWebpackPlugin(),
-    new webpack.HashedModuleIdsPlugin(),
+    new webpack.ids.HashedModuleIdsPlugin(),
     new ScriptExtHtmlWebpackPlugin({
       inline: [/runtime\.[a-z\d]{8}\.js$/],
     }),
