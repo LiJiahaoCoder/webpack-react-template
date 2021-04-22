@@ -124,6 +124,13 @@ if (__DEV__) {
           minChunks: 2,
           reuseExistingChunk: true,
         },
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'initial',
+          name: 'vendors',
+          priority: 10,
+          enforce: true,
+        },
       },
     },
     minimizer: [new UglifyJsWebpackPlugin()],
