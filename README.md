@@ -24,4 +24,8 @@ yarn build
 - [ ] Add react router;
 - [ ] Add page lazy load;
 - [ ] Support less or scss;
-- [ ] Npm tool to create project(just like `CRA`).
+- [ ] Npm tool to create project(just like 
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
