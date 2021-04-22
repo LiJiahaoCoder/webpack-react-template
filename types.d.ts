@@ -1,3 +1,8 @@
+declare module '*.css' {
+  const classNames: Record<string, string>;
+  export default classNames;
+}
+
 declare module '*.png' {
   export default '' as string;
 }

@@ -32,6 +32,22 @@ const config = {
     rules: [
       {
         test: /.css$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: __DEV__ ? 'style-loader' : MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: false,
+              modules: __DEV__ ? { localIdentName: '[path]__[local]' } : true,
+            },
+          }
+        ],
+      },
+      {
+        test: /.css$/,
         include: /node_modules/,
         use: [
           {
