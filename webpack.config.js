@@ -46,7 +46,7 @@ const config = {
       {
         test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
-        use: ['babel-loader', ReactRefreshLoader.path()],
+        use: ['babel-loader'],
       },
       {
         test: /\.(jpe?g|png)(\?.*)?$/,
@@ -70,6 +70,11 @@ const config = {
 
 if (__DEV__) {
   config.devtool = 'eval-cheap-module-source-map';
+  config.module.rules.push({
+    test: /\.(js|ts)x?$/,
+    exclude: /node_modules/,
+    use: [ReactRefreshLoader.path()],
+  });
   config.plugins.push(new ReactRefreshLoader.Plugin());
   config.devServer = {
     port: 8888,
