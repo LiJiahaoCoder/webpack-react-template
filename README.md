@@ -21,7 +21,7 @@ yarn build
 
 ## TODO
 
-- [ ] Add react router;
+- [x] Add react router;
 - [ ] Add page lazy load;
 - [ ] Support less or scss;
 - [ ] Npm tool to create project(just like 
