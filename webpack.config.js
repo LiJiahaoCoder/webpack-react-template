@@ -3,12 +3,12 @@ const glob = require('glob');
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ReactRefreshLoader = require('react-refresh-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
 const PurgeCssWebpackPlugin = require('purgecss-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
 const DEVELOPMENT = 'development';
@@ -88,12 +88,7 @@ const config = {
 
 if (__DEV__) {
   config.devtool = 'eval-cheap-module-source-map';
-  config.module.rules.push({
-    test: /\.(js|ts)x?$/,
-    exclude: /node_modules/,
-    use: [ReactRefreshLoader.path()],
-  });
-  config.plugins.push(new ReactRefreshLoader.Plugin());
+  config.plugins.push(new ReactRefreshWebpackPlugin());
   config.devServer = {
     port: 8888,
     stats: 'errors-only',
