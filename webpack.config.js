@@ -7,9 +7,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
 const PurgeCssWebpackPlugin = require('purgecss-webpack-plugin');
+const CSSMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
 const DEVELOPMENT = 'development';
 const NODE_ENV = process.env.NODE_ENV || DEVELOPMENT;
@@ -115,16 +115,12 @@ if (__DEV__) {
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css',
     }),
-    new OptimizeCssAssetsWebpackPlugin({
-      cssProcessorPluginOptions: {
-        preset: ['default', { discardComments: { removeAll: true } }],
-      },
-    }),
     new PurgeCssWebpackPlugin({
       paths: glob.sync(`${path.join(__dirname, 'src')}/**/*`, { nodir: true }),
     }),
   );
   config.optimization = {
+    minimize: true,
     runtimeChunk: { name: 'runtime' },
     splitChunks: {
       cacheGroups: {
@@ -144,7 +140,14 @@ if (__DEV__) {
         },
       },
     },
-    minimizer: [new UglifyJsWebpackPlugin()],
+    minimizer: [
+      new UglifyJsWebpackPlugin(),
+      new CSSMinimizerWebpackPlugin({
+        minimizerOptions: {
+          preset: ['default', { discardComments: { removeAll: true } }],
+        },
+      })
+    ],
   };
 }
 
