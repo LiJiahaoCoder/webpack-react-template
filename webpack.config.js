@@ -43,7 +43,13 @@ const config = {
               sourceMap: false,
               modules: __DEV__ ? { localIdentName: '[path]__[local]' } : true,
             },
-          }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: false,
+            },
+          },
         ],
       },
       {
@@ -58,7 +64,13 @@ const config = {
             options: {
               sourceMap: false,
             },
-          }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: false,
+            },
+          },
         ],
       },
       {
