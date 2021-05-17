@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Loading from "@/components/loading";
-import routes from "@/routes";
+import { Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Loading from '@/components/loading';
+import routes from '@/routes';
 
 const App = () => (
   <Suspense fallback={<Loading />}>
