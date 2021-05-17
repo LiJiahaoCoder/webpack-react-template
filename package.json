@@ -64,12 +64,5 @@
     "webpack-dev-server": "^3.11.2",
     "webpackbar": "^5.0.0-3",
     "xo": "^0.40.1"
-  },
-  "browserslist": [
-    "last 2 edge versions",
-    "last 2 chrome versions",
-    "last 2 firefox versions",
-    "last 2 safari versions",
-    "last 2 opera versions"
-  ]
+  }
 }
