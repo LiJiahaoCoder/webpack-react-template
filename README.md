@@ -24,7 +24,8 @@ yarn build
 - [x] Add react router;
 - [x] Add page lazy load;
 - [x] Add `eslint` and `stylelint`;
-- [ ] Add `husky`;
+- [x] Add `husky`;
+- [x] Add `Jest`;
 - [ ] Support less or scss;
 - [ ] Npm tool to create project(just like `create-react-app`)
 
