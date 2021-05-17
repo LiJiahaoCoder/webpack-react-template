@@ -6,7 +6,7 @@
     "commit": "git-cz",
     "test": "jest",
     "lint:script": "cross-env NODE_ENV=production eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:style": "cross-env NODE_ENV=production stylelint \"src/**/*.css\"",
+    "lint:style": "cross-env NODE_ENV=production stylelint \"src/**/*.less\"",
     "start": "cross-env NODE_ENV=development webpack serve --hot",
     "build": "cross-env NODE_ENV=production webpack",
     "prepare": "husky install"
@@ -54,6 +54,8 @@
     "husky": "^6.0.0",
     "jest": "^26.6.3",
     "jest-transform-stub": "^2.0.0",
+    "less": "^4.1.1",
+    "less-loader": "^9.0.0",
     "lint-staged": "^11.0.0",
     "mini-css-extract-plugin": "^1.6.0",
     "postcss": "^8.2.15",

@@ -31,11 +31,11 @@ const config = {
   module: {
     rules: [
       {
-        test: /.css$/,
+        test: /.less$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: "style-loader",
+            loader:  __DEV__ ? "style-loader" : MiniCssExtractPlugin.loader,
           },
           {
             loader: "css-loader",
@@ -50,10 +50,18 @@ const config = {
               sourceMap: false,
             },
           },
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: false,
+              additionalData:
+                "@import '@/styles/variables';\n",
+            },
+          },
         ],
       },
       {
-        test: /.css$/,
+        test: /.(css|less)$/,
         include: /node_modules/,
         use: [
           {
@@ -67,6 +75,12 @@ const config = {
           },
           {
             loader: "postcss-loader",
+            options: {
+              sourceMap: false,
+            },
+          },
+          {
+            loader: 'less-loader',
             options: {
               sourceMap: false,
             },
@@ -96,6 +110,19 @@ const config = {
         use: [
           {
             loader: "raw-loader",
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        issuer: /\.less$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 4096,
+              name: 'images/[name].[hash:8].[ext]',
+            },
           },
         ],
       },

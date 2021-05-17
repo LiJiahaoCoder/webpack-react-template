@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 
-import styles from './index.css';
+import styles from './index.less';
 
 const Loading = () => (
   <div className="py-5 d-flex justify-content-center">
