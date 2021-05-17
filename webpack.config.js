@@ -20,7 +20,7 @@ const config = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, './dist'),
-    // publicPath: __DEV__ ? '' : '',
+    publicPath: '/',
     filename: __DEV__ ? '[name].js' : 'js/[name].[contenthash:8].js',
     chunkFilename: __DEV__ ? '[name].js' : 'js/[name].[contenthash:8].js',
   },
@@ -35,7 +35,7 @@ const config = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'style-loader',
+            loader: __DEV__ ? 'style-loader' : MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader',
@@ -87,6 +87,15 @@ const config = {
               limit: 4096,
               name: 'images/[name].[hash:8].[ext]',
             },
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        issuer: /\.(js|ts)x?$/,
+        use: [
+          {
+            loader: 'raw-loader',
           },
         ],
       },
