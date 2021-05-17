@@ -22,9 +22,11 @@ yarn build
 ## TODO
 
 - [x] Add react router;
-- [ ] Add page lazy load;
+- [x] Add page lazy load;
+- [ ] Add `eslint` and `stylelint`;
+- [ ] Add `husky`;
 - [ ] Support less or scss;
-- [ ] Npm tool to create project(just like 
+- [ ] Npm tool to create project(just like `create-react-app`)
 
 ## License
 
