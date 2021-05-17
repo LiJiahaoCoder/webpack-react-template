@@ -35,7 +35,7 @@ const config = {
         exclude: /node_modules/,
         use: [
           {
-            loader: __DEV__ ? "style-loader" : MiniCssExtractPlugin.loader,
+            loader: "style-loader",
           },
           {
             loader: "css-loader",
@@ -106,10 +106,7 @@ const config = {
 
 if (__DEV__) {
   config.devtool = "eval-cheap-module-source-map";
-  config.plugins.push(
-    new webpack.HotModuleReplacementPlugin(),
-    new ReactRefreshWebpackPlugin()
-  );
+  config.plugins.push(new ReactRefreshWebpackPlugin());
   config.devServer = {
     port: 8888,
     stats: "errors-only",
@@ -142,6 +139,7 @@ if (__DEV__) {
   );
   config.optimization = {
     minimize: true,
+    chunkIds: "named",
     runtimeChunk: { name: "runtime" },
     splitChunks: {
       cacheGroups: {
