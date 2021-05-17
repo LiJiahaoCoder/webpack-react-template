@@ -1,9 +1,9 @@
-const runtimeVersion = require('@babel/runtime/package.json').version;
+const runtimeVersion = require("@babel/runtime/package.json").version;
 
 module.exports = ({ env }) => ({
-  targets: '>0.5%',
+  targets: ">0.5%",
   assumptions: {
-    // arrayLikeIsIterable: true,
+    // ArrayLikeIsIterable: true,
     constantReexports: true,
     constantSuper: true,
     enumerableModuleMeta: true,
@@ -26,22 +26,22 @@ module.exports = ({ env }) => ({
   },
   presets: [
     [
-      '@babel/preset-env',
+      "@babel/preset-env",
       {
-        modules: env('test') ? 'commonjs' : false,
-        useBuiltIns: 'usage',
+        modules: env("test") ? "commonjs" : false,
+        useBuiltIns: "usage",
         corejs: 3,
         bugfixes: true,
       },
     ],
     [
-      '@babel/preset-react',
+      "@babel/preset-react",
       {
-        runtime: 'automatic',
+        runtime: "automatic",
       },
     ],
     [
-      '@babel/preset-typescript',
+      "@babel/preset-typescript",
       {
         isTSX: true,
         allExtensions: true,
@@ -49,9 +49,9 @@ module.exports = ({ env }) => ({
     ],
   ],
   plugins: [
-    env('development') && 'react-refresh/babel',
+    env("development") && "react-refresh/babel",
     [
-      '@babel/plugin-transform-runtime',
+      "@babel/plugin-transform-runtime",
       {
         regenerator: false,
         version: runtimeVersion,
@@ -61,7 +61,7 @@ module.exports = ({ env }) => ({
     // but not yet supported in webpack due to support missing from acorn.
     // So we have to translate them for now, these can be removed once webpack has support.
     // See https://github.com/webpack/webpack/issues/10227
-    '@babel/plugin-proposal-optional-chaining',
-    '@babel/plugin-proposal-nullish-coalescing-operator',
+    "@babel/plugin-proposal-optional-chaining",
+    "@babel/plugin-proposal-nullish-coalescing-operator",
   ].filter(Boolean),
 });

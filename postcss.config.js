@@ -1,6 +1,4 @@
-'use strict';
-
-const { browserslist } = require('./package.json');
+const { browserslist } = require("./package.json");
 
 module.exports = {
   plugins: {

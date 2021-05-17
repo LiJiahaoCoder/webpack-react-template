@@ -1,18 +1,18 @@
-import {
-  BrowserRouter as Router,
-  Route,
-} from 'react-router-dom';
-
-const Home = () => (
-  <h1 className="text-primary text-center">
-    Webpack React Template
-  </h1>
-);
+import { Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Loading from "@/components/loading";
+import routes from "@/routes";
 
 const App = () => (
-  <Router>
-    <Route path="*" element={<Home />} />
-  </Router>
+  <Suspense fallback={<Loading />}>
+    <Router>
+      <Routes>
+        {routes.map(({ path, element: Element }) => (
+          <Route key={path} path={path} element={<Element />} />
+        ))}
+      </Routes>
+    </Router>
+  </Suspense>
 );
 
 export default App;

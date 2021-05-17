@@ -1,32 +1,32 @@
-const path = require('path');
-const glob = require('glob');
-const webpack = require('webpack');
-const WebpackBar = require('webpackbar');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
-const PurgeCssWebpackPlugin = require('purgecss-webpack-plugin');
-const CSSMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const path = require("path");
+const glob = require("glob");
+const webpack = require("webpack");
+const WebpackBar = require("webpackbar");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsWebpackPlugin = require("uglifyjs-webpack-plugin");
+const PurgeCssWebpackPlugin = require("purgecss-webpack-plugin");
+const CSSMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
-const DEVELOPMENT = 'development';
+const DEVELOPMENT = "development";
 const NODE_ENV = process.env.NODE_ENV || DEVELOPMENT;
 const __DEV__ = NODE_ENV === DEVELOPMENT;
 
 const config = {
   mode: NODE_ENV,
-  entry: './src/index.tsx',
+  entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/',
-    filename: __DEV__ ? '[name].js' : 'js/[name].[contenthash:8].js',
-    chunkFilename: __DEV__ ? '[name].js' : 'js/[name].[contenthash:8].js',
+    path: path.resolve(__dirname, "./dist"),
+    publicPath: "/",
+    filename: __DEV__ ? "[name].js" : "js/[name].[contenthash:8].js",
+    chunkFilename: __DEV__ ? "[name].js" : "js/[name].[contenthash:8].js",
   },
   resolve: {
-    alias: { '@': path.resolve(__dirname, 'src') },
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+    alias: { "@": path.resolve(__dirname, "src") },
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
   },
   module: {
     rules: [
@@ -35,17 +35,17 @@ const config = {
         exclude: /node_modules/,
         use: [
           {
-            loader: __DEV__ ? 'style-loader' : MiniCssExtractPlugin.loader,
+            loader: __DEV__ ? "style-loader" : MiniCssExtractPlugin.loader,
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               sourceMap: false,
-              modules: __DEV__ ? { localIdentName: '[path]__[local]' } : true,
+              modules: __DEV__ ? { localIdentName: "[path]__[local]" } : true,
             },
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
               sourceMap: false,
             },
@@ -57,16 +57,16 @@ const config = {
         include: /node_modules/,
         use: [
           {
-            loader: __DEV__ ? 'style-loader' : MiniCssExtractPlugin.loader,
+            loader: __DEV__ ? "style-loader" : MiniCssExtractPlugin.loader,
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               sourceMap: false,
             },
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
               sourceMap: false,
             },
@@ -76,16 +76,16 @@ const config = {
       {
         test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: ["babel-loader"],
       },
       {
         test: /\.(jpe?g|png)(\?.*)?$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
               limit: 4096,
-              name: 'images/[name].[hash:8].[ext]',
+              name: "images/[name].[hash:8].[ext]",
             },
           },
         ],
@@ -95,29 +95,29 @@ const config = {
         issuer: /\.(js|ts)x?$/,
         use: [
           {
-            loader: 'raw-loader',
+            loader: "raw-loader",
           },
         ],
       },
     ],
   },
-  plugins: [
-    new WebpackBar(),
-    new HtmlWebpackPlugin(),
-  ],
+  plugins: [new WebpackBar(), new HtmlWebpackPlugin()],
 };
 
 if (__DEV__) {
-  config.devtool = 'eval-cheap-module-source-map';
-  config.plugins.push(new ReactRefreshWebpackPlugin());
+  config.devtool = "eval-cheap-module-source-map";
+  config.plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin()
+  );
   config.devServer = {
     port: 8888,
-    stats: 'errors-only',
+    stats: "errors-only",
     overlay: true,
-    host: '0.0.0.0',
+    host: "0.0.0.0",
     historyApiFallback: true,
     disableHostCheck: true,
-    // proxy: {
+    // Proxy: {
     //   '/api': {
     //     target: '',
     //     changeOrigin: true,
@@ -125,7 +125,7 @@ if (__DEV__) {
     // },
   };
 } else {
-  config.stats = 'none';
+  config.stats = "none";
   config.plugins.push(
     new CleanWebpackPlugin(),
     new webpack.ids.HashedModuleIdsPlugin(),
@@ -133,29 +133,29 @@ if (__DEV__) {
       inline: [/runtime\.[a-z\d]{8}\.js$/],
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].css',
+      filename: "css/[name].[contenthash:8].css",
+      chunkFilename: "css/[name].[contenthash:8].css",
     }),
     new PurgeCssWebpackPlugin({
-      paths: glob.sync(`${path.join(__dirname, 'src')}/**/*`, { nodir: true }),
-    }),
+      paths: glob.sync(`${path.join(__dirname, "src")}/**/*`, { nodir: true }),
+    })
   );
   config.optimization = {
     minimize: true,
-    runtimeChunk: { name: 'runtime' },
+    runtimeChunk: { name: "runtime" },
     splitChunks: {
       cacheGroups: {
         commons: {
           priority: 0,
-          name: 'commons',
-          chunks: 'async',
+          name: "commons",
+          chunks: "async",
           minChunks: 2,
           reuseExistingChunk: true,
         },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          chunks: 'initial',
-          name: 'vendors',
+          chunks: "initial",
+          name: "vendors",
           priority: 10,
           enforce: true,
         },
@@ -165,9 +165,9 @@ if (__DEV__) {
       new UglifyJsWebpackPlugin(),
       new CSSMinimizerWebpackPlugin({
         minimizerOptions: {
-          preset: ['default', { discardComments: { removeAll: true } }],
+          preset: ["default", { discardComments: { removeAll: true } }],
         },
-      })
+      }),
     ],
   };
 }
