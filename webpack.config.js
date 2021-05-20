@@ -35,7 +35,7 @@ const config = {
         exclude: /node_modules/,
         use: [
           {
-            loader:  __DEV__ ? "style-loader" : MiniCssExtractPlugin.loader,
+            loader: "style-loader",
           },
           {
             loader: "css-loader",
