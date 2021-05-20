@@ -1,9 +1,8 @@
 const runtimeVersion = require("@babel/runtime/package.json").version;
+const corejsVersion = require('core-js/package.json').version;
 
 module.exports = ({ env }) => ({
-  targets: ">0.5%",
   assumptions: {
-    // ArrayLikeIsIterable: true,
     constantReexports: true,
     constantSuper: true,
     enumerableModuleMeta: true,
@@ -28,9 +27,13 @@ module.exports = ({ env }) => ({
     [
       "@babel/preset-env",
       {
+        targets: {
+          chrome: "70",
+          ie: "11",
+        },
         modules: env("test") ? "commonjs" : false,
         useBuiltIns: "usage",
-        corejs: 3,
+        corejs: corejsVersion,
         bugfixes: true,
       },
     ],
