@@ -8,7 +8,7 @@ const App = () => (
   <Suspense fallback={<Loading />}>
     <Router>
       <Header />
-      <main className="container">
+      <main className="container bg-body">
         <Routes>
           {routes.map(({ path, element: Page }) => (
             <Route key={path} path={path} element={<Page />} />

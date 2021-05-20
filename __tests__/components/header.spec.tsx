@@ -12,7 +12,7 @@ describe('Header test', () => {
 
     expect(global.location.pathname).toBe('/');
 
-    fireEvent.click(getByText('NotFound'));
+    fireEvent.click(getByText('👐'));
 
     await waitFor(() => {
       expect(global.location.pathname).toBe('/not-found');
