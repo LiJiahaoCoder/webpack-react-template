@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+  testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['./__tests__/jest.setup.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   collectCoverageFrom: ['src/**/*.ts?(x)', '!src/index.tsx', '!src/types/*.ts'],
