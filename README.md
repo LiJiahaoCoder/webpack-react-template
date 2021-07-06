@@ -8,7 +8,9 @@ A simple `React` project based on `bootstrap`, `typescript` and `webpack5`.
 git clone https://github.com/LiJiahaoCoder/webpack-react-template.git
 ```
 
-Enter project directory, then:
+Or click `Use this template` button in *GitHub* page.
+
+Then enter project directory, then:
 
 ```bash
 # install dependencies
@@ -27,7 +29,7 @@ yarn build
 - [x] Add `husky`;
 - [x] Add `Jest`;
 - [x] Support less or scss;
-- [ ] Npm tool to create project(just like `create-react-app`)
+- [ ] ~~Npm tool to create project(just like `create-react-app`)~~ May be *GitHub* template is enough :)
 
 ## License
 
