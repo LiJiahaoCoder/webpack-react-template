@@ -31,11 +31,11 @@ const config = {
   module: {
     rules: [
       {
-        test: /.less$/,
+        test: /.(css|less)$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: "style-loader",
+            loader: __DEV__ ? "style-loader" : MiniCssExtractPlugin.loader,
           },
           {
             loader: "css-loader",
@@ -162,7 +162,8 @@ if (__DEV__) {
     }),
     new PurgeCssWebpackPlugin({
       paths: glob.sync(`${path.join(__dirname, "src")}/**/*`, { nodir: true }),
-    })
+      only: ["bundle", "vendor"],
+    }),
   );
   config.optimization = {
     minimize: true,
