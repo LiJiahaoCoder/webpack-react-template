@@ -60,11 +60,5 @@ module.exports = ({ env }) => ({
         version: runtimeVersion,
       },
     ],
-    // Optional chaining and nullish coalescing are supported in @babel/preset-env,
-    // but not yet supported in webpack due to support missing from acorn.
-    // So we have to translate them for now, these can be removed once webpack has support.
-    // See https://github.com/webpack/webpack/issues/10227
-    "@babel/plugin-proposal-optional-chaining",
-    "@babel/plugin-proposal-nullish-coalescing-operator",
   ].filter(Boolean),
 });
