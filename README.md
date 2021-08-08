@@ -2,6 +2,8 @@
 
 A simple `React` project based on `bootstrap`, `typescript` and `webpack5`.
 
+[Click to preview](https://lijiahaocoder.github.io/webpack-react-template/)
+
 ## How to use?
 
 ```bash
