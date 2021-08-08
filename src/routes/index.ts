@@ -3,11 +3,11 @@ import NotFound from '@/pages/not-found';
 
 const routes = [
   {
-    path: '/',
+    path: '/webpack-react-template/',
     element: lazy(() => import('@/pages/home')),
   },
   {
-    path: '*',
+    path: '/webpack-react-template/*',
     element: NotFound,
   },
 ];

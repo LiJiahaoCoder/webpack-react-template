@@ -7,11 +7,11 @@ import styles from './index.less';
 
 const menus = [
   {
-    path: '/',
+    path: '/webpack-react-template/',
     text: '🏠',
   },
   {
-    path: '/not-found',
+    path: '/webpack-react-template/not-found',
     text: '👐',
   },
 ];

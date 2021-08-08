@@ -15,7 +15,9 @@ describe('Header test', () => {
     fireEvent.click(getByText('👐'));
 
     await waitFor(() => {
-      expect(global.location.pathname).toBe('/not-found');
+      expect(global.location.pathname).toBe(
+        '/webpack-react-template/not-found'
+      );
     });
   });
 });
