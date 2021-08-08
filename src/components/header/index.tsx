@@ -31,7 +31,10 @@ const Svg = ({ content }: SvgProps) => (
 const Header = () => (
   <header className="sticky-top py-3 shadow-sm bg-light">
     <div className="container d-flex justify-content-between align-items-center">
-      <Link to="/" className={classnames('w-25', styles.logo)}>
+      <Link
+        to="/webpack-react-template/"
+        className={classnames('w-25', styles.logo)}
+      >
         <Svg content={Logo} />
       </Link>
       <div>
