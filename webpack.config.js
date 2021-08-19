@@ -51,7 +51,7 @@ const config = {
             },
           },
           {
-            loader: 'less-loader',
+            loader: "less-loader",
             options: {
               sourceMap: false,
               additionalData:
@@ -80,7 +80,7 @@ const config = {
             },
           },
           {
-            loader: 'less-loader',
+            loader: "less-loader",
             options: {
               sourceMap: false,
             },
@@ -118,10 +118,10 @@ const config = {
         issuer: /\.less$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
               limit: 4096,
-              name: 'images/[name].[hash:8].[ext]',
+              name: "images/[name].[hash:8].[ext]",
             },
           },
         ],
@@ -135,15 +135,16 @@ if (__DEV__) {
   config.devtool = "eval-cheap-module-source-map";
   config.plugins.push(new ReactRefreshWebpackPlugin());
   config.devServer = {
+    open: true,
     port: 8888,
     stats: "errors-only",
     overlay: true,
-    host: "0.0.0.0",
+    host: "localhost",
     historyApiFallback: true,
     disableHostCheck: true,
     // Proxy: {
-    //   '/api': {
-    //     target: '',
+    //   "/api": {
+    //     target: "",
     //     changeOrigin: true,
     //   },
     // },
