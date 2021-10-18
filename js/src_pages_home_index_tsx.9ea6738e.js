@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebpack_react_template=self.webpackChunkwebpack_react_template||[]).push([["src_pages_home_index_tsx"],{tCGL:(e,t,a)=>{a.r(t),a.d(t,{default:()=>r});var c=a("nKUr");const r=function(){return(0,c.jsx)("h1",{className:"text-primary text-center pt-5",children:"Webpack React Template"})}}}]);
